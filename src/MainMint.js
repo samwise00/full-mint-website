@@ -51,7 +51,7 @@ const MainMint = ({ accounts, setAccounts }) => {
                         fontFamily="VT323"
                         textShadow="0 2px 2px #000000"
                     >
-                        It's 2072. Are you the baddest Zouker around?? Mint a Zouk Punk NFT to find out.
+                        It's 2073. Are you the baddest Zouker around?? Mint a Zouk Punk NFT to find out.
                     </Text>
                 </div>
                 
