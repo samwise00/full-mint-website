@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Sample Hardhat Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
-## Available Scripts
+Try running some of the following tasks:
 
-In the project directory, you can run:
+```shell
+npx hardhat help
+npx hardhat test
+GAS_REPORT=true npx hardhat test
+npx hardhat node
+npx hardhat run scripts/deploy.js
+```
 
-### `npm start`
+Notes/Instructions:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Set up environment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```npx create-react-app full-mint-website```
+This creates the directory full-mint-website and creates the boilerplace files within.
 
-### `npm test`
+```npm i -D hardhat```
+Sets up blockchain dev environment use to compile, deploy, debug, and more
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```npx hardhat```
+Creates the necessary files in the directory
 
-### `npm run build`
+```npm i @openzeppelin/contracts```
+Gives access to community standard contract tooling and boilerplace  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion```
+Gives access to pre-built react components for frontend UI
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```npm i -D dotenv```
+gives .env utility
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```npm i -D @nomiclabs/hardhat-etherscan``` 
+allows us to verify out contract
 
-### `npm run eject`
+2. Delete unnecessary files in src:
+    App.test.js
+    logo.svg
+    reportWebVitals.js
+    setupTests.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Code the smart contract
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Get RPC URL private keys from alchemy or infura by creating a new project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Get API Key from etherscan under "My API Keys". Create a new one
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. Add .env variables for test network RPC URL, Etherscan key, and private key(from metamask account that will deploy the contract)
 
-## Learn More
+7. Deploy
+```npx hardhat clean```
+```npx hardhat compile```
+```npx hardhat run scripts/deployZoukPunksNFT.js --network rinkeby```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+8. Verify Contract
+```npx hardhat verify --network rinkeby 0x9869bb79B6A0932D90205b0c0E9417Ae5e28205d```
+This allows us to see the decode the contract source code on etherscan
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+9. Code the react site
 
-### Code Splitting
+10. Enable minting w/ the writable isMintEnabled function on etherscan
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# TODO
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Get chainlink keeper working in order to update existing NFTs
+2. Create an evolution system where upgrades respect their previous evolution and re-roll attributes once they evolve
+5. Get actual art
+6. Create Team section
+7. Create About Sections
+8. Get the site on Fleek (decentralized website hosting using IPFS)
+9. Deploy to Mainnet
+10. Create "My NFTs" section that displays all of the wallet's owned NFTs from the collection
